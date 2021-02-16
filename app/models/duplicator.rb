@@ -1,0 +1,2 @@
+class Duplicator < ApplicationRecord
+end
