@@ -1,4 +1,4 @@
-class AuthorController < ApplicationController
+class Api::V1::AuthorsController < ApplicationController
   
   def index 
     authors = Author.all 

@@ -4,5 +4,5 @@ class Duplicator < ApplicationRecord
   belongs_to :reference, foreign_key: :reference_id, class_name: "Book"
 
   # Many to Many relationship many books can have many duplicates
-  belongs_to :duplicate, foreign_key: :duplicate_id, class_name: "Book"
+  belongs_to :duplicates, foreign_key: :duplicate_id, class_name: "Book"
 end
