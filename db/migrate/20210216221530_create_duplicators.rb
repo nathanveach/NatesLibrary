@@ -4,7 +4,6 @@ class CreateDuplicators < ActiveRecord::Migration[6.1]
       t.integer :reference_id
       t.integer :duplicate_id
 
-      t.timestamps
     end
   end
 end

@@ -39,7 +39,7 @@ const MakeDuplicate = (props) => {
         throw new Error("Network response was not ok.");
       })
       .then((response) => props.setBook(response))
-      .then((response) => props.setShowDuplicator(false))
+      .then(() => props.setShowDuplicator(false))
       .catch(() => props.bookHistory.push("/"));
   };
 
@@ -51,8 +51,8 @@ const MakeDuplicate = (props) => {
   });
   return (
     <div>
-      <form onSubmit={submitHandler}>
-        <select onChange={changeHandler}>
+      <form onSubmit={submitHandler} className="form-inline">
+        <select onChange={changeHandler} className="custom-select">
           <option>Choose a New Reference</option>
           {referenceList.map((ref, idx) => (
             <option key={idx} value={ref.id}>
@@ -60,7 +60,9 @@ const MakeDuplicate = (props) => {
             </option>
           ))}
         </select>
-        <button type="submit">Change</button>
+        <button type="submit" className="ml-2 btn btn-warning">
+          Change
+        </button>
       </form>
     </div>
   );

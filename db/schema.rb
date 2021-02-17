@@ -35,8 +35,6 @@ ActiveRecord::Schema.define(version: 2021_02_16_221530) do
   create_table "duplicators", force: :cascade do |t|
     t.integer "reference_id"
     t.integer "duplicate_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

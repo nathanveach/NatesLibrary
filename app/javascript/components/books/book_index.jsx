@@ -18,10 +18,11 @@ const Books = () => {
   }, []);
 
   return (
-    <ul>
+    <ul className="list-group-flush">
+      <h1 className="text-center">Books</h1>
       {books &&
         books.map((book, key) => (
-          <li key={key}>
+          <li key={key} className="list-group-item">
             <Link to={`/books/${book.id}`}>{book.title}</Link>
           </li>
         ))}

@@ -23,7 +23,9 @@ const MakeReference = (props) => {
 
   return (
     <div>
-      <button onClick={clickHandler}>Make this book a reference</button>
+      <button onClick={clickHandler} className="btn btn-warning">
+        Make this book a reference!
+      </button>
     </div>
   );
 };

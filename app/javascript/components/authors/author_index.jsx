@@ -18,10 +18,11 @@ const Authors = (props) => {
   }, []);
 
   return (
-    <ul>
+    <ul className="list-group-flush">
+      <h1 className="text-center">Authors</h1>
       {authors &&
         authors.map((author, key) => (
-          <li key={key}>
+          <li key={key} className="list-group-item">
             <Link to={`/authors/${author.id}`}>{author.fullName}</Link>
           </li>
         ))}

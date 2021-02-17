@@ -25,18 +25,31 @@ const Author = (props) => {
 
   return (
     <div>
-      <h1>{author.fullName}</h1>
-      <h3>
-        has written:
-        <ul>
+      <div className="jumbotron jumbotron-fluid">
+        <div className="container">
+          <h1 className="display-4">{author.fullName}</h1>
+        </div>
+      </div>
+      <div className="container">
+        <h3>Books Written:</h3>
+        <div className="row">
           {author.books &&
             author.books.map((book, idx) => (
-              <Link to={`/books/${book.id}`} key={idx}>
-                <li>{book.isReference && book.title}</li>
-              </Link>
+              <div className="col-md-4">
+                <div className="card">
+                  <Link to={`/books/${book.id}`} key={idx}>
+                    <div className="card-body">
+                      {book.isReference && book.title}
+                    </div>
+                  </Link>
+                </div>
+              </div>
             ))}
-        </ul>
-      </h3>
+        </div>
+        <div className="text-center">
+          <Link to={"/"}>Home</Link>
+        </div>
+      </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ export default (
   <Router>
     <Switch>
       <Route path="/" exact component={Home} />
-      <Route path="/books/:id" exact component={Book} />
+      <Route path="/books/:id" component={Book} />
       <Route path="/authors/:id" exact component={Author} />
     </Switch>
   </Router>
