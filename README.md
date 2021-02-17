@@ -10,3 +10,4 @@ javascript/components/authors/author_index.jsx
 javascript/components/duplicator/make_duplicate.jsx
 javascript/components/duplicator/change_reference.jsx
 javascript/components/duplicator/make_reference.jsx
+.
