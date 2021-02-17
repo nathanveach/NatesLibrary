@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'authors/:id', to: 'authors#show'
       get 'books/index'
       get 'books/:id', to: 'books#show'
-      get 'books/references', to: 'books#referenceList'
+      get 'references', to: 'books#referenceList'
       post 'duplicator/create/:id', to: 'duplicator#makeDuplicate'
       patch 'duplicator/update/:id', to: 'duplicator#changeReference'
       delete 'duplicator/destroy/:id', to: 'duplicator#makeReference'

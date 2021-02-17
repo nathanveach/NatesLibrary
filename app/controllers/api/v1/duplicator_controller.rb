@@ -1,15 +1,15 @@
-class DuplicatorController < ApplicationController
+class Api::V1::DuplicatorController < ApplicationController
 
   def makeDuplicate
     book = Book.find(params[:id])
-    book.update!(isReference: false)
     
     # Moves all of book's duplicates to the new reference
     duplicates = Duplicator.where(reference_id: book.id)
     duplicates.update_all(reference_id: params[:reference_id])
    
     # Saves the link between this book and it's new reference
-    if Duplicator.create!(reference_id: params[:reference_id], duplicate_id: book.id)
+    if Duplicator.find_or_create_by(reference_id: params[:reference_id], duplicate_id: book.id)
+      book.update!(isReference: false)
       render json: book
     else
       render json: book.errors
@@ -18,8 +18,8 @@ class DuplicatorController < ApplicationController
 
   def changeReference
     book = Book.find(params[:id])
-    duplicator = Duplicator.where(duplicate_id: book_id)
-    if duplicator.update!(reference_id: params[:reference_id])
+    duplicator = Duplicator.where(duplicate_id: book.id)
+    if duplicator.find_or_create_by(reference_id: params[:reference_id])
       render json: book
     else
       render json: book.errors

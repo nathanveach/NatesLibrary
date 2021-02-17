@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import MakeDuplicate from "../duplicator/make_duplicate";
+import MakeReference from "../duplicator/make_reference";
+import ChangeReference from "../duplicator/change_reference";
 
 const Book = (props) => {
   const [book, setBook] = useState({});
+  const [showDuplicator, setShowDuplicator] = useState(false);
+  const [allReferences, setAllReferences] = useState([]);
+  const [reference, setReference] = useState("");
 
   const {
     match: {
@@ -38,10 +44,44 @@ const Book = (props) => {
         </ul>
       </h3>
       {book.isReference ? (
-        <h5>This book is a reference.</h5>
+        <h5>
+          This book is a reference.
+          <button onClick={() => setShowDuplicator(!showDuplicator)}>
+            change
+          </button>
+        </h5>
       ) : (
-        <p>this book is a duplicate of summ</p>
+        <div>
+          <p>this book is a duplicate of summ</p>
+          <ChangeReference
+            book={book}
+            setBook={setBook}
+            bookHistory={props.history}
+            allReferences={allReferences}
+            setAllReferences={setAllReferences}
+            reference={reference}
+            setReference={setReference}
+            setShowDuplicator={setShowDuplicator}
+          />
+          <MakeReference
+            book={book}
+            setBook={setBook}
+            bookHistory={props.history}
+          />
+        </div>
       )}
+      {showDuplicator ? (
+        <MakeDuplicate
+          book={book}
+          setBook={setBook}
+          bookHistory={props.history}
+          setAllReferences={setAllReferences}
+          setReference={setReference}
+          reference={reference}
+          allReferences={allReferences}
+          setShowDuplicator={setShowDuplicator}
+        />
+      ) : null}
       <ul>
         {book.duplicates &&
           book.duplicates.map((dupe, idx) => <li key={idx}>{dupe.title}</li>)}
