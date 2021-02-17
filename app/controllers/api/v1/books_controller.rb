@@ -1,7 +1,7 @@
 class Api::V1::BooksController < ApplicationController
   
   def index
-    books = Book.all 
+    books = Book.all.order(:title)
     render json: books
   end
 

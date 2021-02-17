@@ -37,13 +37,17 @@ const ChangeReference = (props) => {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(() => props.setShowDuplicator(false))
       .then((response) => props.setBook(response))
+      .then(() => props.setShowDuplicator(false))
       .catch(() => props.bookHistory.push("/"));
   };
 
   const referenceList = props.allReferences.filter((ref) => {
-    if (props.book.reference && ref.id == props.book.reference.id) {
+    if (
+      props.book &&
+      props.book.reference &&
+      ref.id == props.book.reference.id
+    ) {
       return false;
     }
     return true;
@@ -53,7 +57,7 @@ const ChangeReference = (props) => {
       <form onSubmit={submitHandler} className="form-inline">
         <select onChange={changeHandler} className="custom-select">
           <option disabled selected>
-            {props.book.reference && props.book.reference.title}
+            {props.book && props.book.reference && props.book.reference.title}
           </option>
           {referenceList.map((ref, idx) => (
             <option key={idx} value={ref.id}>

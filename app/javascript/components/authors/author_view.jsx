@@ -36,10 +36,10 @@ const Author = (props) => {
           {author.books &&
             author.books.map((book, idx) => (
               <div className="col-md-4">
-                <div className="card">
+                <div className="card mb-4">
                   <Link to={`/books/${book.id}`} key={idx}>
                     <div className="card-body">
-                      {book.isReference && book.title}
+                      📘 {book.isReference && book.title}
                     </div>
                   </Link>
                 </div>

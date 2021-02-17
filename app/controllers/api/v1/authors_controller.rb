@@ -1,7 +1,7 @@
 class Api::V1::AuthorsController < ApplicationController
   
   def index 
-    authors = Author.all 
+    authors = Author.all.order(:fullName) 
     render json: authors
   end
 

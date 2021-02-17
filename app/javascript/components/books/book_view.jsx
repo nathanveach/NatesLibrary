@@ -34,7 +34,7 @@ const Book = (props) => {
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
           <h1 className="display-4">{book && book.title}</h1>
-          {book.isReference && (
+          {book && book.isReference && (
             <div>
               {showDuplicator ? (
                 <MakeDuplicate
@@ -60,7 +60,7 @@ const Book = (props) => {
               )}
             </div>
           )}
-          {!book.isReference && (
+          {book && !book.isReference && (
             <div>
               <h6>
                 Is a duplicate of:
@@ -84,14 +84,15 @@ const Book = (props) => {
         <div className="row">
           <ul className="list-unstyled col">
             <h3>Authors:</h3>
-            {book.authors &&
+            {book &&
+              book.authors &&
               book.authors.map((author, idx) => (
                 <Link to={`/authors/${author.id}`} key={idx}>
                   <li>{author.fullName}</li>
                 </Link>
               ))}
           </ul>
-          {book.isReference ? (
+          {book && book.isReference ? (
             <ul className="list-unstyled col">
               <h3>Duplicates:</h3>
               {book.duplicates &&
@@ -117,7 +118,7 @@ const Book = (props) => {
             </div>
           )}
         </div>
-        <div className="justify-content-center">
+        <div className="text-center">
           <Link to={"/"}>Home</Link>
         </div>
       </div>
