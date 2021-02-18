@@ -7,6 +7,7 @@ import ChangeReference from "../duplicator/change_reference";
 const Book = (props) => {
   const [book, setBook] = useState({});
   const [showDuplicator, setShowDuplicator] = useState(false);
+  const [showReferencer, setShowReferencer] = useState(false);
   const [allReferences, setAllReferences] = useState([]);
   const [reference, setReference] = useState("");
 
@@ -34,6 +35,7 @@ const Book = (props) => {
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
           <h1 className="display-4">{book && book.title}</h1>
+          {/* If book is a reference show MakeDuplicate component */}
           {book && book.isReference && (
             <div>
               {showDuplicator ? (
@@ -60,23 +62,51 @@ const Book = (props) => {
               )}
             </div>
           )}
-          {book && !book.isReference && (
+          {/* If book is not a reference AND showReferencer == false show button to load referencer */}
+          {book && !book.isReference && !showReferencer && (
             <div>
-              <h6>
-                Is a duplicate of:
-                <a
-                  href={`${book.reference && book.reference.id}`}
-                  className="ml-2"
+              <div className="form-check-inline">
+                <h6>
+                  Is a duplicate of:
+                  <a
+                    href={`${book.reference && book.reference.id}`}
+                    className="ml-2"
+                  >
+                    {book.reference && book.reference.title}
+                  </a>
+                </h6>
+                <button
+                  className="btn btn-warning ml-2"
+                  onClick={() => setShowReferencer(!showReferencer)}
                 >
-                  {book.reference && book.reference.title}
-                </a>
-              </h6>
-              <MakeReference
+                  Change
+                </button>
+              </div>
+            </div>
+          )}
+          {/* If book is not a reference and showReferencer button was pushed show ChangeReference component */}
+          {book && !book.isReference && showReferencer && (
+            <div className="form-check-inline">
+              <h3 className="mr-3">Make this book is a duplicate of:</h3>
+              <ChangeReference
                 book={book}
                 setBook={setBook}
                 bookHistory={props.history}
+                allReferences={allReferences}
+                setAllReferences={setAllReferences}
+                reference={reference}
+                setReference={setReference}
+                setShowReferencer={setShowReferencer}
               />
             </div>
+          )}
+          {/* If book is not a reference show MakeReference component */}
+          {book && !book.isReference && (
+            <MakeReference
+              book={book}
+              setBook={setBook}
+              bookHistory={props.history}
+            />
           )}
         </div>
       </div>
@@ -92,7 +122,8 @@ const Book = (props) => {
                 </Link>
               ))}
           </ul>
-          {book && book.isReference ? (
+          {/* If book has duplicates list em out */}
+          {book && book.isReference && (
             <ul className="list-unstyled col">
               <h3>Duplicates:</h3>
               {book.duplicates &&
@@ -102,20 +133,6 @@ const Book = (props) => {
                   </li>
                 ))}
             </ul>
-          ) : (
-            <div className="form-check-inline">
-              <h3 className="mr-3">This book is a duplicate of:</h3>
-              <ChangeReference
-                book={book}
-                setBook={setBook}
-                bookHistory={props.history}
-                allReferences={allReferences}
-                setAllReferences={setAllReferences}
-                reference={reference}
-                setReference={setReference}
-                setShowDuplicator={setShowDuplicator}
-              />
-            </div>
           )}
         </div>
         <div className="text-center">

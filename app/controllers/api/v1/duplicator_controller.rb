@@ -17,9 +17,9 @@ class Api::V1::DuplicatorController < ApplicationController
 
   def changeReference
     book = Book.find(params[:id])
-    duplicator = Duplicator.where(duplicate_id: book.id)
+    duplicator = Duplicator.find_by(duplicate_id: book.id)
 
-    if duplicator.find_or_create_by(reference_id: params[:reference_id])
+    if duplicator.update(reference_id: params[:reference_id])
       render json: book, include: [:authors, :duplicates, :reference]
     else
       render json: book

@@ -12,7 +12,7 @@ const ChangeReference = (props) => {
       })
       .then((response) => props.setAllReferences(response))
       .catch(() => props.bookHistory.push("/"));
-  }, []);
+  }, [props.book]);
 
   const changeHandler = (event) => {
     props.setReference(event.target.value);
@@ -38,7 +38,7 @@ const ChangeReference = (props) => {
         throw new Error("Network response was not ok.");
       })
       .then((response) => props.setBook(response))
-      .then(() => props.setShowDuplicator(false))
+      .then(() => props.setShowReferencer(false))
       .catch(() => props.bookHistory.push("/"));
   };
 
@@ -56,16 +56,14 @@ const ChangeReference = (props) => {
     <div>
       <form onSubmit={submitHandler} className="form-inline">
         <select onChange={changeHandler} className="custom-select">
-          <option disabled selected>
-            {props.book && props.book.reference && props.book.reference.title}
-          </option>
+          <option>Choose a Reference:</option>
           {referenceList.map((ref, idx) => (
             <option key={idx} value={ref.id}>
               {ref.title}
             </option>
           ))}
         </select>
-        <button type="submit" className="btn btn-warning">
+        <button type="submit" className="btn btn-warning ml-2">
           Change
         </button>
       </form>
