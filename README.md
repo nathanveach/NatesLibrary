@@ -42,9 +42,6 @@ javascript/components/duplicator/make_reference.jsx
 **Add Search Bar Feature**  
   Download ransack gem and create a search route and controller action  
   Create Search Component with a state to hold user text input and call rails API
- 
-**Refactor Book View Component**  
-  Refactor or create new components to clean up all the conditional rendering
   
 **Add RSpec Gem**  
   Use RSpec for more encompassing tests instead of minitest
@@ -57,7 +54,13 @@ javascript/components/duplicator/make_reference.jsx
   
 **Use Axios instead of FetchAPI**  
   Import and use Axios for AJAX calls  
-  Better error handling and more features with Axios  
+  Better error handling and more features with Axios 
+ 
+**Add another create duplicates method**  
+  Add a create method to be able to create duplicates from a reference page  
+ 
+**Refactor Book View Component**  
+  Refactor or create new components to clean up all the conditional rendering
   
 **Use async/await instead of promises**  
   Update all useEffect hooks with async / await  
