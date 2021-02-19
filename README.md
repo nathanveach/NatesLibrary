@@ -18,7 +18,7 @@ test/integration/duplicator_flow_test.rb
 javascript/packs/index.jsx ← Entry point  
 javascript/routes/index.jsx ← Front end routes  
 javascript/components/app.jsx ← Entry point into components  
-javascript/components/homepage.jsx 
+javascript/components/homepage.jsx  
 javascript/components/books/book_view.jsx  
 Javascript/components/books/book_index.jsx  
 javascript/components/authors/author_view.jsx  
@@ -65,7 +65,7 @@ javascript/components/duplicator/make_reference.jsx
   Create changeReference, makeReference, and makeDuplicate components containing form with an input for new reference  
   changeReference sends PATCH request to API with new reference in a FormData object  
   makeDuplicate sends POST request to API  with new reference in a FormData object  
-  makeReference sends Delete request to API to delete any old references  
+  makeReference sends DELETE request to API to delete any old references  
   Grab props from parent component: Book View  
   
 **Books/Authors components**  
