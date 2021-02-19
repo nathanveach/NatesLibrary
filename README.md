@@ -6,15 +6,15 @@ Run bundle install & rails db:migrate & rails db:seed to setup
 ## Tests
 run rake test
 
-**Functional Controller Tests:**  
+**Functional Controller Tests**  
 test/functional/authors_controller_test.rb  
 test/functional/books_controller_test.rb  
 
-**Integration Tests:**  
+**Integration Tests**  
 test/integration/duplicator_flow_test.rb
 
 
-## React schematics:
+## React schematics
 javascript/packs/index.jsx ← Entry point  
 javascript/routes/index.jsx ← Front end routes  
 javascript/components/app.jsx ← Entry point into components  
@@ -27,7 +27,7 @@ javascript/components/duplicator/make_duplicate.jsx
 javascript/components/duplicator/change_reference.jsx  
 javascript/components/duplicator/make_reference.jsx  
 
-## Upcoming Features:
+## Upcoming Features
 **Finish Styling Front End**  
   Add a Navbar and breadcrumbs  
   Add images and icons throughout  
@@ -39,7 +39,7 @@ javascript/components/duplicator/make_reference.jsx
 **Refactor Book View Component**  
   Refactor or create new components to clean up all the conditional rendering
   
-**Add RSpec Gem**
+**Add RSpec Gem**  
   Use RSpec for more encompassing tests instead of minitest
     
 **Import Bootstrap properly**  
@@ -53,10 +53,10 @@ javascript/components/duplicator/make_reference.jsx
   Better error handling and more features with Axios  
   
 **Use async/await instead of promises**  
-  Update all useEffect hooks with async / await 
+  Update all useEffect hooks with async / await  
   Test for UI edge cases  
   
-## Completed Features:
+## Completed Features
 **Front End Styling**  
   Import Bootstrap CSS library via CDN into header  
   Add grid layout and styles to React components    
