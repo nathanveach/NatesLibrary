@@ -2,8 +2,12 @@
 
 one:
   reference_id: 1
-  duplicate_id: 1
+  duplicate_id: 2
 
 two:
   reference_id: 1
-  duplicate_id: 1
+  duplicate_id: 3
+
+three:
+  reference_id: 4
+  duplicate_id: 5

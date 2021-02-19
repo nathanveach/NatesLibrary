@@ -35,8 +35,9 @@ const Book = (props) => {
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
           <h1 className="display-4">{book && book.title}</h1>
-          {/* If book is a reference show MakeDuplicate component */}
-          {book && book.isReference && (
+          {book && book.isReference && <h4 className="mb-5">Is a Reference</h4>}
+          {/* If book has no reference show MakeDuplicate component */}
+          {book && book.reference == undefined && (
             <div>
               {showDuplicator ? (
                 <MakeDuplicate
@@ -51,7 +52,7 @@ const Book = (props) => {
                 />
               ) : (
                 <div className="form-check-inline">
-                  <h6>This book is a reference.</h6>
+                  <h6>This book has no references</h6>
                   <button
                     onClick={() => setShowDuplicator(!showDuplicator)}
                     className="btn btn-warning ml-2"
@@ -62,28 +63,32 @@ const Book = (props) => {
               )}
             </div>
           )}
-          {/* If book is not a reference AND showReferencer == false show button to load referencer */}
-          {book && !book.isReference && !showReferencer && (
-            <div>
-              <div className="form-check-inline">
-                <h6>
-                  Is a duplicate of:
-                  <a
-                    href={`${book.reference && book.reference.id}`}
-                    className="ml-2"
+          {/* If book is NOT a reference AND showReferencer == false AND book has a reference 
+          - show button to load referencer */}
+          {book &&
+            !book.isReference &&
+            !showReferencer &&
+            book.reference != undefined && (
+              <div>
+                <div className="form-check-inline">
+                  <h6>
+                    Is a duplicate of:
+                    <a
+                      href={`${book.reference && book.reference.id}`}
+                      className="ml-2"
+                    >
+                      {book.reference && book.reference.title}
+                    </a>
+                  </h6>
+                  <button
+                    className="btn btn-warning ml-2"
+                    onClick={() => setShowReferencer(!showReferencer)}
                   >
-                    {book.reference && book.reference.title}
-                  </a>
-                </h6>
-                <button
-                  className="btn btn-warning ml-2"
-                  onClick={() => setShowReferencer(!showReferencer)}
-                >
-                  Change
-                </button>
+                    Change
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
           {/* If book is not a reference and showReferencer button was pushed show ChangeReference component */}
           {book && !book.isReference && showReferencer && (
             <div className="form-check-inline">
