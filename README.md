@@ -1,10 +1,14 @@
 # Nate's Library 📚
 Ruby 3.0 / Rails 6.1.2.1  
 Library App for Whooo's Reading :)  
-Run bundle install & rails db:migrate & rails db:seed to setup  
+run `npm install`  
+run `bundle install`  
+run `rails db:migrate`  
+run `rails db:seed`  
+run `rails s`  
 
 ## Tests
-run rake test
+`run rake test`
 
 **Functional Controller Tests**  
 test/functional/authors_controller_test.rb  
@@ -28,6 +32,9 @@ javascript/components/duplicator/change_reference.jsx
 javascript/components/duplicator/make_reference.jsx  
 
 ## Upcoming Features
+**Upgrade DB**  
+  Upgrade database to something like postgres for production  
+    
 **Finish Styling Front End**  
   Add a Navbar and breadcrumbs  
   Add images and icons throughout  
