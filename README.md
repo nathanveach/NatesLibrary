@@ -1,5 +1,5 @@
 # Nate's Library 📚
-Ruby 3.0 / Rails 6.1.2.1  
+Ruby 3.0 / Rails 6.1.2.1 / ReactJS 17.0.1
 Library App for Whooo's Reading :)  
 run `npm install`  
 run `bundle install`  
