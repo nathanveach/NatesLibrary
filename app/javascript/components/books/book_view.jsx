@@ -35,7 +35,7 @@ const Book = (props) => {
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
           <h1 className="display-4">{book && book.title}</h1>
-          {book && book.isReference && <h4 className="mb-5">Is a Reference</h4>}
+          {book && book.isReference && <h4>Is a Reference</h4>}
           {/* If book has no reference show MakeDuplicate component */}
           {book && book.reference == undefined && (
             <div>
