@@ -61,6 +61,10 @@ javascript/components/duplicator/make_reference.jsx
  
 **Refactor Book View Component**  
   Refactor or create new components to clean up all the conditional rendering
+ 
+**Add Authors list to duplicates and vice versa**  
+  Only reference books are showing authors at the moment  
+  Add a conditional render/new component to map over Book.reference.authors for duplicate books  
   
 **Use async/await instead of promises**  
   Update all useEffect hooks with async / await  
